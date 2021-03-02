@@ -43,7 +43,7 @@ def execute_query(connection, query):
     try:
         cursor.execute(query)
         connection.commit()
-        print("Query executed successfully")
+        print("Command Executed Successfully")
     except Error as e:
         print(f"The error '{e}' occurred")
 
@@ -152,7 +152,7 @@ elif option == "b":
         print("Name: " + u.Name)
         print("Contact Information: " + u.contactDetails)
         print("Date Created: " + str(u.createDate))
-        print("---------")
+        print("--------------------------------")
 
 
 elif option == "c":
@@ -170,7 +170,34 @@ elif option == "c":
         print("Name: " + u.Name)
         print("Contact Information: " + u.contactDetails)
         print("Date Created: " + str(u.createDate))
+        print("--------------------------------")
+
+
+
+elif option == "o":
+        #CRUD - Read
+    # read query - to get every row form the users table
+    select_contacts = "SELECT * FROM contacts"
+    # we are storing the result of our query
+    contacts = execute_read_query(connection, select_contacts)
+
+    # Making use of class User - parsing information from the result
+    for contact in contacts:
+        # create instance of class User and pass in the elements from result users
+        u = Contact(contact[0], contact[1], contact[2], contact[3])
+        # now we use the field variables of class user
+        print("Name: " + u.Name)
+        print("Contact Information: " + u.contactDetails)
+        print("Date Created: " + str(u.createDate))
         print("---------")
+
+elif option == "q":
+    print ("Program Has Quit")
+    quit()
+
+else:
+    print("Error: Unkown Command. Please Try Again")
+
 
 
 
