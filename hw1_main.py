@@ -35,7 +35,7 @@ def execute_read_query(connection, query):
         result = cursor.fetchall()
         return result
     except Error as e:
-        print(f"The error '{e}' occurred")
+        print(f"The error '{e}' occurred") #only prints if there are connection errors
 
      #executes a query
 def execute_query(connection, query):
@@ -45,7 +45,8 @@ def execute_query(connection, query):
         connection.commit()
         print("Command Executed Successfully")
     except Error as e:
-        print(f"The error '{e}' occurred")
+        print(f"The error '{e}' occurred") #only prints if there are connection errors
+
 
 #Prints menu for the user
 #This prompts the user to enter the designated string below in order to execute the desired task
