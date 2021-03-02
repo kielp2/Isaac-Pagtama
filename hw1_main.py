@@ -4,7 +4,7 @@ from mysql.connector import Error
 import datetime
 from datetime import date
 
-#This function creates the connection
+#This function creates the connection to the database
 def create_connection(host_name,user_name, user_password, db_name):
     connector = None
     
