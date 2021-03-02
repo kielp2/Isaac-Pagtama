@@ -193,10 +193,13 @@ elif option == "o":
         print("Date Created: " + str(u.createDate))
         print("---------")
 
+#The command option that quits the program
 elif option == "q":
     print ("Program Has Quit")
     quit()
 
+#if any input does not equal the input needed to do a task on the menu
+#then the command will show an error, telling the user to try again
 else:
     print("Error: Unkown Command. Please Try Again")
 
