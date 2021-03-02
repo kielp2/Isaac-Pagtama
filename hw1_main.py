@@ -48,6 +48,8 @@ def execute_query(connection, query):
         print(f"The error '{e}' occurred")
 
 #Prints menu for the user
+#This prompts the user to enter the designated string below in order to execute the desired task
+#otherwise, the program will ask the user to try again
 print("MENU: ")
 print ("a - Add contact")
 print("d - Remove contact")
