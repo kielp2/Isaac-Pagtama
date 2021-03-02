@@ -1,4 +1,4 @@
-from user import Contact
+from records import Contact
 import mysql.connector
 from mysql.connector import Error
 import datetime
@@ -47,7 +47,7 @@ def execute_query(connection, query):
     except Error as e:
         print(f"The error '{e}' occurred")
 
-
+#Prints menu for the user
 print("MENU: ")
 print ("a - Add contact")
 print("d - Remove contact")
@@ -84,16 +84,17 @@ elif option == "u":
     print("Press z to update Creation Date")
     update = input()
     if update == "x":
-        print("Which ID's name do you want to change? ")
-        id = input()
+        print("Which ID's name do you want to change? ") 
+        id = input() #inputs the id of the name they want to change
         print("What will be the new name? ")
-        new_name = input()
+        new_name = input() #inputs the new name
+        #SQL syntax that updates the name
         update_contact_query = """
         UPDATE
             contacts
         SET
             
-            name = '%s'
+            name = '%s'        
         
 
         WHERE
@@ -105,6 +106,7 @@ elif option == "u":
         id = input()
         print("What is the ID's new E-mail or Phone Number? ")
         new_details = input()
+         #SQL syntax that updates the contact details
         update_contact_query = """
         UPDATE
             contacts
@@ -122,6 +124,7 @@ elif option == "u":
         id = input()
         print("Enter the new date (Format: yyyy-mm-dd)")
         new_date= input()
+         #SQL syntax that updates the creation date
         update_contact_query = """
         UPDATE
             contacts
@@ -138,17 +141,16 @@ elif option == "u":
 
         
 elif option == "b":
-        #CRUD - Read
-    # read query - to get every row form the users table
+    # read query - to get every row form the contacts table
     select_contacts = "SELECT * FROM contacts ORDER BY Name"
     # we are storing the result of our query
     contacts = execute_read_query(connection, select_contacts)
 
-    # Making use of class User - parsing information from the result
+    # Making use of class Contact - parsing information from the result
     for contact in contacts:
-        # create instance of class User and pass in the elements from result users
+        # create instance of class Contact and pass in the elements from result contact
         u = Contact(contact[0], contact[1], contact[2], contact[3])
-        # now we use the field variables of class user
+        # now we use the field variables of class contact
         print("Name: " + u.Name)
         print("Contact Information: " + u.contactDetails)
         print("Date Created: " + str(u.createDate))
@@ -156,17 +158,16 @@ elif option == "b":
 
 
 elif option == "c":
-        #CRUD - Read
-    # read query - to get every row form the users table
+    # read query - to get every row from the contacts table ordered by creationDates
     select_contacts = "SELECT * FROM contacts ORDER BY creationDate"
     # we are storing the result of our query
     contacts = execute_read_query(connection, select_contacts)
 
     # Making use of class User - parsing information from the result
     for contact in contacts:
-        # create instance of class User and pass in the elements from result users
+        # create instance of class Contact and pass in the elements from result contact
         u = Contact(contact[0], contact[1], contact[2], contact[3])
-        # now we use the field variables of class user
+        # now we use the field variables of class contact
         print("Name: " + u.Name)
         print("Contact Information: " + u.contactDetails)
         print("Date Created: " + str(u.createDate))
@@ -175,17 +176,16 @@ elif option == "c":
 
 
 elif option == "o":
-        #CRUD - Read
-    # read query - to get every row form the users table
+    # read query - to get every row form the contacts table
     select_contacts = "SELECT * FROM contacts"
     # we are storing the result of our query
     contacts = execute_read_query(connection, select_contacts)
 
-    # Making use of class User - parsing information from the result
+    # Making use of class Contact - parsing information from the result
     for contact in contacts:
-        # create instance of class User and pass in the elements from result users
+        # create instance of class Conttact and pass in the elements from result contact
         u = Contact(contact[0], contact[1], contact[2], contact[3])
-        # now we use the field variables of class user
+        # now we use the field variables of class contact
         print("Name: " + u.Name)
         print("Contact Information: " + u.contactDetails)
         print("Date Created: " + str(u.createDate))
