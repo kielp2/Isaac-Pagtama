@@ -5,8 +5,8 @@
 
 #Python class names are written in Capitalized words
 class Contact:
-    def __init__(self, id, Name, contactDetails, createDate):
-        self.id = id
+    def __init__(self, id, Name, contactDetails, createDate): #constraints to be called
+        self.id = id  
         self.Name = Name
         self.contactDetails = contactDetails
         self.createDate = createDate
