@@ -66,7 +66,7 @@ if option == "a":
     name = input()
     print("What is his contact information? (Email or Phone Number Only)")
     contDetails = input()
-    print("When was this record created? (yyyy-m-d Format only)")
+    print("When was this record created? (yyyy-mm-ddd Format only)")
     createDate = input()
 
     query = "INSERT INTO contacts (Name, contactDetails, creationDate) VALUES ('%s', '%s', '%s')" % (name, contDetails, createDate,)
